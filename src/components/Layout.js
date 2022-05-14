@@ -100,7 +100,7 @@ function Layout(props) {
       </Drawer>
       <div className={classes.page}>
         <div className={classes.toolbar}></div>
-        {props.children}
+        {props.children} 
       </div>
     </div>
   );
