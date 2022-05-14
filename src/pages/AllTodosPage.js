@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import {Grid, Paper} from "@material-ui/core";
+import {Container, Grid} from "@material-ui/core";
+import TodoCard from "../components/TodoCard";
 
 function AllTodosPage() {
   const [todos, setTodos] = useState([]);
@@ -10,39 +11,25 @@ function AllTodosPage() {
       .then(data => setTodos(data))
   });
 
-  return (
-    <div>
-      <Grid container>
-        <Grid item>
-          <Paper>
-            1
-          </Paper>
-        </Grid>
-        <Grid item>
-          <Paper>
-            2
-          </Paper>
-        </Grid>
-        <Grid item>
-          <Paper>
-            3
-          </Paper>
-        </Grid>
-        <Grid item>
-          <Paper>
-            4
-          </Paper>
-        </Grid>
+  const handleDelete = async (id) => {
+    await fetch("http://localhost:8000/api/goals/" + id, {
+      method: 'DELETE'
+    })
 
+    const newTodos = todos.filter(todo => todo._id !== id)
+    setTodos(newTodos)
+  }
+
+  return (
+    <Container>
+      <Grid container spacing={3}>
+      {todos.map(todo => (
+        <Grid item key={todo._id} xs={12} md={6} lg={4}>
+          <TodoCard todo={todo} handleDelete ={handleDelete}/>
+        </Grid>  
+      ))}
       </Grid>
-      {todos.map((todo) => {
-        return(
-        <div>
-          <h3>{todo.text}</h3>
-          <h2>{todo.createdAt} </h2>
-        </div>);
-      })}
-    </div>
+    </Container>
   );
 }
 
