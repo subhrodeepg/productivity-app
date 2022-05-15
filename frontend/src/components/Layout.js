@@ -69,7 +69,7 @@ function Layout(props) {
       <AppBar color="secondary" className={classes.appbar} elevation={0}>
         <Toolbar>
           <Typography className={classes.date}>Today is the {format(new Date(), 'do MMMM Y')}</Typography>
-          <Typography>Subhrodeep</Typography>
+          <Typography>Subhrodeep Ghose</Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -79,7 +79,7 @@ function Layout(props) {
         classes={{ paper: classes.drawerPaper }}
       >
         <div>
-          <Typography variant="h5" className={classes.title}>Todo List</Typography>
+          <Typography variant="h6" color="textSecondary" component="h2" className={classes.title}>Todo List</Typography>
         </div>
 
         <List>

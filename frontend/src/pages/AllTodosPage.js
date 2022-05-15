@@ -6,13 +6,13 @@ function AllTodosPage() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/goals")
+    fetch("http://localhost:8000/api/todos")
       .then((res) => res.json())
       .then(data => setTodos(data))
   });
 
   const handleDelete = async (id) => {
-    await fetch("http://localhost:8000/api/goals/" + id, {
+    await fetch("http://localhost:8000/api/todos/" + id, {
       method: 'DELETE'
     })
 
