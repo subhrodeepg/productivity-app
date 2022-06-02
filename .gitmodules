@@ -1,0 +1,3 @@
+[submodule "server/server/backend"]
+	path = server/server/backend
+	url = https://github.com/subhrodeepg/productivity-app
